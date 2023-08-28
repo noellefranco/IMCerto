@@ -20,6 +20,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Sex? selectedGender;
+  int userHeight = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('IMCerto - Cálculo de IMC'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -71,7 +73,37 @@ class _MyHomePageState extends State<MyHomePage> {
             child: DefaultContainer(
               selectedColor: kActiveCardDefaultColor,
               childCard: Column(
-                children: [Text('altura')],
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'altura'.toUpperCase(),
+                    style: kDefaultTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(userHeight.toString(), style: kHeightNumTextStyle),
+                      Text(
+                        'cm'.toLowerCase(),
+                        style: kDefaultTextStyle,
+                      )
+                    ],
+                  ),
+                  Slider(
+                    activeColor: Color(0xff107eed),
+                    inactiveColor: Color(0xffeee4de),
+                    onChanged: (double newValue) {
+                      setState(() {
+                        userHeight = newValue.round();
+                      });
+                    },
+                    value: userHeight.toDouble(),
+                    min: 120.0,
+                    max: 220.0,
+                  )
+                ],
               ),
             ),
           ),

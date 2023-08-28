@@ -21,7 +21,7 @@ class IconContent extends StatelessWidget {
         SizedBox(
           height: kDfaultSzedBoxHeight,
         ),
-        Text(gender.toUpperCase(), style: kDefaultInactiveGenderTextStyle)
+        Text(gender.toUpperCase(), style: kDefaultTextStyle)
       ],
     );
   }
