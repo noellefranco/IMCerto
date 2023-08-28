@@ -136,9 +136,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             RoundedButton(
                               icon: FontAwesomeIcons.minus,
                               handlePressed: () {
-                                setState(() {
-                                  userWeight--;
-                                });
+                                if (userWeight > 0) {
+                                  setState(() {
+                                    userWeight--;
+                                  });
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          'Você não pode informar um peso negativo.'),
+                                    ),
+                                  );
+                                }
                               },
                             ),
                             SizedBox(
@@ -178,9 +187,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             RoundedButton(
                               icon: FontAwesomeIcons.minus,
                               handlePressed: () {
-                                setState(() {
-                                  userAge--;
-                                });
+                                if (userAge > 0) {
+                                  setState(() {
+                                    userAge--;
+                                  });
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          'Você não pode informar uma idade menor do que zero anos.'),
+                                    ),
+                                  );
+                                }
                               },
                             ),
                             SizedBox(
