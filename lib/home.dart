@@ -41,38 +41,34 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: DefaultContainer(
+                    handleTap: () {
                       setState(() {
                         selectedGender = Sex.masc;
                       });
                     },
-                    child: DefaultContainer(
-                      selectedColor: selectedGender == Sex.masc
-                          ? activeCardDefaultColor
-                          : inactiveCardDefaultColor,
-                      childCard: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        gender: 'homem',
-                      ),
+                    selectedColor: selectedGender == Sex.masc
+                        ? activeCardDefaultColor
+                        : inactiveCardDefaultColor,
+                    childCard: IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      gender: 'homem',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: DefaultContainer(
+                    handleTap: () {
                       setState(() {
                         selectedGender = Sex.fem;
                       });
                     },
-                    child: DefaultContainer(
-                      selectedColor: selectedGender == Sex.fem
-                          ? activeCardDefaultColor
-                          : inactiveCardDefaultColor,
-                      childCard: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        gender: 'mulher',
-                      ),
+                    selectedColor: selectedGender == Sex.fem
+                        ? activeCardDefaultColor
+                        : inactiveCardDefaultColor,
+                    childCard: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      gender: 'mulher',
                     ),
                   ),
                 ),
