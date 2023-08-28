@@ -8,6 +8,7 @@ import 'package:imcerto/components/icon_content.dart';
 import 'package:imcerto/components/rounded_buttons.dart';
 import 'package:imcerto/globals.dart';
 import 'result_screen.dart';
+import 'package:imcerto/bmi_calculator.dart';
 
 enum Sex {
   masc,
@@ -205,10 +206,19 @@ class _MyHomePageState extends State<MyHomePage> {
           CalculateButton(
             buttonText: 'calcular',
             onClick: () {
+              BMICalculator calc = BMICalculator(
+                height: userHeight,
+                weight: userWeight,
+              );
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultScreen(),
+                  builder: (context) => ResultScreen(
+                    bmiDescription: calc.getDescription(),
+                    bmiResult: calc.calculateBMI(),
+                    bmiText: calc.getResult(),
+                  ),
                 ),
               );
             },

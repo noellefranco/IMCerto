@@ -6,6 +6,15 @@ import 'package:imcerto/components/default_card.dart';
 import 'package:imcerto/globals.dart';
 
 class ResultScreen extends StatelessWidget {
+  ResultScreen(
+      {required this.bmiDescription,
+      required this.bmiResult,
+      required this.bmiText});
+
+  final String bmiResult;
+  final String bmiText;
+  final String bmiDescription;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,15 +44,14 @@ class ResultScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Normal',
+                    bmiText,
                     style: kBMIResultsTextStyle,
                   ),
                   Text(
-                    '18.4',
+                    bmiResult,
                     style: kBMIResultsNumTextStyle,
                   ),
-                  Text(
-                      'O seu IMC está baixo. É importante que você se alimente de forma mais saudável!',
+                  Text(bmiDescription,
                       textAlign: TextAlign.center,
                       style: kBMIResultDescriptionTextStyle),
                 ],
