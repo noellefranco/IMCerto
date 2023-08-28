@@ -1,7 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'globals.dart';
+import 'package:imcerto/globals.dart';
 
 class IconContent extends StatelessWidget {
   IconContent({required this.icon, required this.gender});

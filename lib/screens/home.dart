@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'default_card.dart';
-import 'icon_content.dart';
-import 'globals.dart';
+import 'package:imcerto/components/calculate_button.dart';
+import 'package:imcerto/components/default_card.dart';
+import 'package:imcerto/components/icon_content.dart';
+import 'package:imcerto/components/rounded_buttons.dart';
+import 'package:imcerto/globals.dart';
+import 'result_screen.dart';
 
 enum Sex {
   masc,
@@ -199,38 +202,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          Container(
-            color: kCalculateFooter,
-            margin: const EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: 80.0,
-          )
+          CalculateButton(
+            buttonText: 'calcular',
+            onClick: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultScreen(),
+                ),
+              );
+            },
+          ),
         ],
       ),
-    );
-  }
-}
-
-class RoundedButton extends StatelessWidget {
-  RoundedButton({required this.icon, required this.handlePressed});
-
-  final IconData icon;
-  final Function handlePressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: () {
-        handlePressed();
-      },
-      elevation: 6.0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xffd34500),
-      child: Icon(icon),
     );
   }
 }
