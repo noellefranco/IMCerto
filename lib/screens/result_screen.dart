@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:imcerto/components/calculate_button.dart';
 import 'package:imcerto/components/default_card.dart';
 import 'package:imcerto/globals.dart';
 
@@ -16,9 +17,13 @@ class ResultScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Text(
-              'resultado'.toUpperCase(),
-              style: kResultPageTitleTextStyle,
+            child: Container(
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                'resultado'.toUpperCase(),
+                style: kResultPageTitleTextStyle,
+              ),
             ),
           ),
           Expanded(
@@ -38,13 +43,18 @@ class ResultScreen extends StatelessWidget {
                     style: kBMIResultsNumTextStyle,
                   ),
                   Text(
-                      'O seu IMC está baixo. Você precisa se alimentar de forma mais saudável!',
+                      'O seu IMC está baixo. É importante que você se alimente de forma mais saudável!',
                       textAlign: TextAlign.center,
                       style: kBMIResultDescriptionTextStyle),
                 ],
               ),
             ),
-          )
+          ),
+          CalculateButton(
+              onClick: () {
+                Navigator.pop(context);
+              },
+              buttonText: 'recalcular')
         ],
       ),
     );

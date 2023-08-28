@@ -34,9 +34,9 @@ const kBMIResultsTextStyle = TextStyle(
 const kBMIResultsNumTextStyle = TextStyle(
   fontSize: 100.0,
   fontWeight: FontWeight.bold,
-  color: Color(0xff052500),
+  color: Color(0xffFAF7F5),
 );
 const kBMIResultDescriptionTextStyle = TextStyle(
   fontSize: 22.0,
-  color: Color(0xff052500),
+  color: Color(0xFF23282D),
 );
