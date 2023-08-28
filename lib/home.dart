@@ -14,6 +14,11 @@ const defaultActiveGenderTextStyle = TextStyle(
   color: Color(0xFF23282D),
 );
 
+enum Sex {
+  masc,
+  fem,
+}
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required String title});
 
@@ -22,28 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Color defaultMascCard = inactiveCardDefaultColor;
-  Color defaultFemCard = inactiveCardDefaultColor;
-
-  void handleColor(int sex) {
-    if (sex == 1) {
-      if (defaultMascCard == inactiveCardDefaultColor) {
-        defaultMascCard = activeCardDefaultColor;
-        defaultFemCard = inactiveCardDefaultColor;
-      } else {
-        defaultMascCard = inactiveCardDefaultColor;
-      }
-    }
-
-    if (sex == 2) {
-      if (defaultFemCard == inactiveCardDefaultColor) {
-        defaultFemCard = activeCardDefaultColor;
-        defaultMascCard = inactiveCardDefaultColor;
-      } else {
-        defaultFemCard = inactiveCardDefaultColor;
-      }
-    }
-  }
+  Sex? selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        handleColor(1);
+                        selectedGender = Sex.masc;
                       });
                     },
                     child: DefaultContainer(
-                      selectedColor: defaultMascCard,
+                      selectedColor: selectedGender == Sex.masc
+                          ? activeCardDefaultColor
+                          : inactiveCardDefaultColor,
                       childCard: IconContent(
                         icon: FontAwesomeIcons.mars,
                         gender: 'homem',
@@ -76,11 +62,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        handleColor(2);
+                        selectedGender = Sex.fem;
                       });
                     },
                     child: DefaultContainer(
-                      selectedColor: defaultFemCard,
+                      selectedColor: selectedGender == Sex.fem
+                          ? activeCardDefaultColor
+                          : inactiveCardDefaultColor,
                       childCard: IconContent(
                         icon: FontAwesomeIcons.venus,
                         gender: 'mulher',
