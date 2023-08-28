@@ -4,15 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'default_card.dart';
 import 'icon_content.dart';
-
-const activeCardDefaultColor = Color(0xffFA5200);
-const footerColor = Color(0xFF5f4d3c);
-const inactiveCardDefaultColor = Color(0xffEEE4DE);
-const defaultActiveGenderTextStyle = TextStyle(
-  fontSize: 20.0,
-  fontWeight: FontWeight.w700,
-  color: Color(0xFF23282D),
-);
+import 'globals.dart';
 
 enum Sex {
   masc,
@@ -48,8 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                     },
                     selectedColor: selectedGender == Sex.masc
-                        ? activeCardDefaultColor
-                        : inactiveCardDefaultColor,
+                        ? kActiveCardDefaultColor
+                        : kInactiveCardDefaultColor,
                     childCard: IconContent(
                       icon: FontAwesomeIcons.mars,
                       gender: 'homem',
@@ -64,8 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                     },
                     selectedColor: selectedGender == Sex.fem
-                        ? activeCardDefaultColor
-                        : inactiveCardDefaultColor,
+                        ? kActiveCardDefaultColor
+                        : kInactiveCardDefaultColor,
                     childCard: IconContent(
                       icon: FontAwesomeIcons.venus,
                       gender: 'mulher',
@@ -76,24 +68,29 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Expanded(
-            child: DefaultContainer(selectedColor: activeCardDefaultColor),
+            child: DefaultContainer(
+              selectedColor: kActiveCardDefaultColor,
+              childCard: Column(
+                children: [Text('altura')],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
                   child:
-                      DefaultContainer(selectedColor: activeCardDefaultColor),
+                      DefaultContainer(selectedColor: kActiveCardDefaultColor),
                 ),
                 Expanded(
                   child:
-                      DefaultContainer(selectedColor: activeCardDefaultColor),
+                      DefaultContainer(selectedColor: kActiveCardDefaultColor),
                 ),
               ],
             ),
           ),
           Container(
-            color: footerColor,
+            color: kFoterColor,
             margin: const EdgeInsets.only(top: 10.0),
             width: double.infinity,
             height: 80.0,

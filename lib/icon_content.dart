@@ -1,15 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-
-const defaultInactiveGenderTextStyle = TextStyle(
-  fontSize: 20.0,
-  fontWeight: FontWeight.w700,
-  color: Color(0xFF5f4d3c),
-);
-const defaultSzedBoxHeight = 15.0;
-const defaultIconHeight = 95.0;
-const defaultIconColor = Color(0xffFAF7F5);
+import 'globals.dart';
 
 class IconContent extends StatelessWidget {
   IconContent({required this.icon, required this.gender});
@@ -23,13 +15,13 @@ class IconContent extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: defaultIconHeight,
-          color: defaultIconColor,
+          size: kDefaultIconHeight,
+          color: kDefaultIconColor,
         ),
         SizedBox(
-          height: defaultSzedBoxHeight,
+          height: kDfaultSzedBoxHeight,
         ),
-        Text(gender.toUpperCase(), style: defaultInactiveGenderTextStyle)
+        Text(gender.toUpperCase(), style: kDefaultInactiveGenderTextStyle)
       ],
     );
   }
